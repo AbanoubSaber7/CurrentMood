@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Mood App
 
 تطبيق "Current Mood" هو نظام تفاعلي لتحديد حالة المزاج من صورة وجه المستخدم وتقديم توصيات صوتية ومرئية تتناسب مع الحالة.
@@ -142,4 +141,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
->>>>>>> ea197f17cc03b509884fd6c8629e1b1c6c547a37
