@@ -35,6 +35,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
     'Angry',
     'Disgust',
     'Fear',
+    'Contempt',
   ];
 
   final _history = MoodHistoryService();
@@ -71,6 +72,8 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         return Colors.orangeAccent;
       case 'fear':
         return Colors.deepPurple;
+      case 'contempt':
+        return Colors.blueGrey.shade800;
       case 'disgust':
         return const Color.fromARGB(255, 174, 79, 146);
       case 'neutral':
@@ -109,6 +112,8 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         return "Do one thing every day that scares you.";
       case 'neutral':
         return "Peace is its own reward.";
+      case 'contempt':
+        return "Be the best version of yourself, always.";
       default:
         return "Believe in yourself and all that you are.";
     }

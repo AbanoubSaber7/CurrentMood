@@ -49,6 +49,8 @@ class _DetectionScreenState extends State<DetectionScreen> {
         return Colors.orangeAccent;
       case 'fear':
         return Colors.deepPurple;
+      case 'contempt':
+        return Colors.blueGrey.shade800;
       case 'disgust':
         return const Color.fromARGB(255, 174, 79, 146);
       case 'neutral':

@@ -4,10 +4,10 @@ Advanced Emotion Detection Training Script
 Using the custom Performance Model architecture from fer-model-main.
 
 This script will:
-1. Load fer2013.csv (48x48 images).
+1. Load fer2013.csv or ferplus labels (48x48 images).
 2. Use the custom 'get_performance_model' architecture.
 3. Map labels to match the App:
-   0:Neutral, 1:Happy, 2:Surprise, 3:Sad, 4:Angry, 5:Disgust, 6:Fear
+   0:Neutral, 1:Happy, 2:Surprise, 3:Sad, 4:Angry, 5:Disgust, 6:Fear, 7:Contempt
 4. Train with data augmentation and fine-tuning.
 5. Save to TFLite format.
 """
@@ -30,12 +30,13 @@ except ImportError:
     sys.exit(1)
 
 # FER2013 classes: 0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral
-# APP classes: 0=Neutral, 1=Happy, 2=Surprise, 3=Sad, 4=Angry, 5=Disgust, 6=Fear
+# FER+ classes: 0=Neutral, 1=Happy, 2=Surprise, 3=Sad, 4=Angry, 5=Disgust, 6=Fear, 7=Contempt
+# APP classes: 0=Neutral, 1=Happy, 2=Surprise, 3=Sad, 4=Angry, 5=Disgust, 6=Fear, 7=Contempt
 # Mapping array: index is FER id, value is APP id
-FER_TO_APP = np.array([4, 5, 6, 1, 3, 2, 0], dtype=np.int64)
+FER_TO_APP = np.array([4, 5, 6, 1, 3, 2, 0, 7], dtype=np.int64)
 
 IMG_SIZE = 48
-NUM_CLASSES = 7
+NUM_CLASSES = 8
 
 def load_fer_csv(csv_path: str) -> tuple[np.ndarray, np.ndarray]:
     df = pd.read_csv(csv_path)
@@ -57,7 +58,7 @@ def load_fer_csv(csv_path: str) -> tuple[np.ndarray, np.ndarray]:
         arr = np.array(pixels[i], dtype=np.float32).reshape(IMG_SIZE, IMG_SIZE, 1)
         x[i] = arr
         e = int(emotions[i])
-        if e < 0 or e > 6:
+        if e < 0 or e > 7:
             continue
         y_app[i] = FER_TO_APP[e]
 

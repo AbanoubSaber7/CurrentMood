@@ -28,7 +28,7 @@ class EmotionTfliteHelper {
     'Angry',
     'Disgust',
     'Fear',
- 
+    'Contempt',
   ];
 
   int numClasses = 8;
